@@ -10,10 +10,33 @@ export const Repositories = styled.div`
    
     max-width:700px;
     margin-top:80px;
+
+   
+    .item{
+
+        display:block;
+        border-radius: 5px;
+        background: #FFFF;
+
+        display:flex;
+        align-items:center;
+
+
+        transition: transform 0.2s;
+
+         &:hover{
+            transform: translateX(10px);
+         }
+
+         & + div{
+        margin-top:10px
+    }
+
     
     a {
         text-decoration:none;
         width:100%;
+        
         padding: 24px;
         display:block;
         border-radius: 5px;
@@ -22,17 +45,10 @@ export const Repositories = styled.div`
         display:flex;
         align-items:center;
 
-        transition: transform 0.2s;
-
-        &:hover{
-           transform: translateX(10px);
-        }
 
         // Quando um a for precedido de outro a aplicar o que tem abaixo
         // isso dá stilo do primeiro para frente
-        & + a {
-        margin-top:10px
-    }
+
 
         img{
             border-radius: 50%;
@@ -56,16 +72,24 @@ export const Repositories = styled.div`
                color:#A8A8B3;
                margin-top:4px; 
             }
+            
         }
-
         svg{
         /* Vai pegar todo espaco da esqueda disponivel e jogar de margem */
-        margin-left: auto;
+        margin-right:0px;
         color:#cbcbd6;
         }
+
+
     }
 
+    svg{
+        float:right;
+        margin-right: 10px;
+        color:#cbcbd6;
+    }
 
+    }
 
 `
 

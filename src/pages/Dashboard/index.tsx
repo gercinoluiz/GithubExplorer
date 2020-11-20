@@ -2,6 +2,7 @@ import React, { useState, FormEvent, useEffect } from 'react'
 import { Title, Form, Repositories, Error } from './styles';
 import logo from "../../assets/logo.svg";
 import { FiChevronRight } from 'react-icons/fi'
+import { MdDelete } from 'react-icons/md'
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
 
@@ -33,16 +34,20 @@ const DashBoard: React.FC = () => {
         if (localStorageRepositories) { return JSON.parse(localStorageRepositories) } else { return [] }
 
 
-    })
+    }
+    )
     const [inputError, setInputError] = useState('')
 
 
     useEffect(() => {
 
-        // Saving into LocalHost
+        // Saving into LocalStorage
         localStorage.setItem('@GetRepositories:repositories', JSON.stringify(respositories))
 
-    }, [respositories])
+
+
+
+    }, [respositories, setRepositories])
 
     const handleAddRepository = async (e: FormEvent /* receiving the form event*/): Promise<void> => {
 
@@ -67,6 +72,7 @@ const DashBoard: React.FC = () => {
 
         }
     }
+    console.log(respositories)
 
     return (
         <>
@@ -88,17 +94,39 @@ const DashBoard: React.FC = () => {
 
                 {respositories.map(repo => (
 
-                    < Link key={repo.full_name} to={`/repositories/${repo.full_name}`}>
-                        <img src={repo.owner.avatar_url}
-                            alt={repo.owner.login} />
-                        <div>
-                            <strong>{repo.full_name}</strong>
-                            <p>{repo.description}</p>
-                        </div>
-                        <FiChevronRight size={20} />
 
 
-                    </Link>
+
+                    <div className="item">
+
+                        < Link key={repo.full_name} to={`/repositories/${repo.full_name}`}>
+                            <img src={repo.owner.avatar_url}
+                                alt={repo.owner.login} />
+                            <div>
+                                <strong>{repo.full_name}</strong>
+                                <p>{repo.description}</p>
+                            </div>
+                            <FiChevronRight size={20} />
+
+
+                        </Link>
+                        <MdDelete size={22} onClick={() => {
+
+
+                            const filteredArray = respositories.filter(repository => repository.full_name !== repo.full_name)
+
+                            localStorage.setItem('@GetRepositories:repositories', JSON.stringify(filteredArray))
+                            setRepositories(filteredArray)
+
+
+                            // setRepositories(filteredArray)
+
+
+
+                        }} />
+
+                    </div>
+
 
 
                 ))}
