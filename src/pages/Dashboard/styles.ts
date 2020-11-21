@@ -17,6 +17,7 @@ export const Repositories = styled.div`
         display:block;
         border-radius: 5px;
         background: #FFFF;
+        width:100%;
 
         display:flex;
         align-items:center;
@@ -46,6 +47,13 @@ export const Repositories = styled.div`
         align-items:center;
 
 
+
+        @media (max-width: 768px) {
+                          padding: 15px;
+                      };
+
+
+
         // Quando um a for precedido de outro a aplicar o que tem abaixo
         // isso dá stilo do primeiro para frente
 
@@ -58,12 +66,23 @@ export const Repositories = styled.div`
         }
 
         div{
-            margin: 0 16px;
+            margin: 0 10px;
+       
             flex:1;
 
             strong{
+                
                 font-size:20px;
+                width:50px;
+                display:inline-block;
+                
                 color:#3D3D4D;
+               
+
+                @media (max-width: 768px) {
+                          font-size: 15px;
+                      };
+
 
             }
 
