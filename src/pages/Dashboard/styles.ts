@@ -49,7 +49,8 @@ export const Repositories = styled.div`
 
 
         @media (max-width: 768px) {
-                          padding: 15px;
+                          padding: 
+                          15px;
                       };
 
 
